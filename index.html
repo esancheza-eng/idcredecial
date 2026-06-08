@@ -779,7 +779,8 @@ scene.addEventListener('mouseleave', () => {
   flip.style.transition = 'transform 0.85s cubic-bezier(0.4,0.2,0.2,1)';
   flip.style.transform = flipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
 });
-scene.addEventListener('click', () => {
+scene.addEventListener('click', (e) => {
+  if (e.target.closest('a') || e.target.closest('button')) return;
   const flipped = flip.classList.contains('flipped');
   tiltActive = true;
   if (flipped) showFront(); else showBack();
